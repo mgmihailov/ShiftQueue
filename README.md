@@ -1,2 +1,2 @@
-# PathFinder
-A path finding plugin for Unreal Engine 4
+# ShiftQueue
+A plugin for Unreal Engine 4 providing action queueing functionality.
