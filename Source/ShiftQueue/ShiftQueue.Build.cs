@@ -1,15 +1,15 @@
-// Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
+// Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
 using UnrealBuildTool;
 
-public class PathFinder : ModuleRules
+public class ShiftQueue : ModuleRules
 {
-	public PathFinder(TargetInfo Target)
+	public ShiftQueue(TargetInfo Target)
 	{
 		
 		PublicIncludePaths.AddRange(
 			new string[] {
-				"PathFinder/Public"
+				"ShiftQueue/Public"
 				// ... add public include paths required here ...
 			}
 			);
@@ -17,7 +17,7 @@ public class PathFinder : ModuleRules
 		
 		PrivateIncludePaths.AddRange(
 			new string[] {
-				"PathFinder/Private",
+				"ShiftQueue/Private",
 				// ... add other private include paths required here ...
 			}
 			);
