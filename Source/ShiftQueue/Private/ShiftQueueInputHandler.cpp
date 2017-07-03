@@ -4,7 +4,6 @@
 #include "GameFramework/Actor.h"
 
 #include "ShiftQueueInputHandler.h"
-#include "ShiftQueueCommand.h"
 
 void SShiftQueueInputHandler::Construct(const FArguments& InArgs)
 {
@@ -27,9 +26,7 @@ FReply SShiftQueueInputHandler::OnMouseButtonDown(const FGeometry& MyGeometry, c
 		PlayerController->GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
 		if (CursorHit.IsValidBlockingHit())
 		{
-			OnShiftQueueInputHandlerMouseButtonDown.Broadcast(FShiftQueueCommand(CursorHit.ImpactPoint
-				, EShiftQueueActionType::ESQAT_Move
-				, EShiftQueueCommandType::ESQCT_Character));
+			OnShiftQueueInputHandlerMouseButtonDown.Broadcast(CursorHit.ImpactPoint);
 		}
 
 		return FReply::Handled();

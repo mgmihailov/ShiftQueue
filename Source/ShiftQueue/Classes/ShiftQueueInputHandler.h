@@ -3,9 +3,7 @@
 #include "SlateBasics.h"
 #include "SCompoundWidget.h"
 
-#include "ShiftQueueCommand.h"
-
-DECLARE_MULTICAST_DELEGATE_OneParam(FShiftQueueInputHandlerMouseButtonDown, const FShiftQueueCommand&);
+DECLARE_MULTICAST_DELEGATE_OneParam(FShiftQueueInputHandlerMouseButtonDown, const FVector&);
 
 class SShiftQueueInputHandler : public SCompoundWidget
 {

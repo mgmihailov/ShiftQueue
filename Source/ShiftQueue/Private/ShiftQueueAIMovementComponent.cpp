@@ -26,11 +26,6 @@ void UShiftQueueAIMovementComponent::BeginPlay()
 	OwningAIController->GetPathFollowingComponent()->OnRequestFinished.AddUObject(this, &UShiftQueueAIMovementComponent::OnMoveRequestFinished);
 }
 
-void UShiftQueueAIMovementComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-}
-
 void UShiftQueueAIMovementComponent::ExecuteMoveRequest(const FAIMoveRequest& MoveRequest)
 {
 	bIsExecutingCommand = true;

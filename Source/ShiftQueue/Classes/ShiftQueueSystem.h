@@ -9,8 +9,8 @@
 
 struct FAIMoveRequest;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShiftQueuePlayerCommandAdded, const FShiftQueueCommand&, PlayerCommand);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FShiftQueueAICommandAdded, const FAIMoveRequest&, AICommand, const FString&, GroupName);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShiftQueuePlayerCommandAdded, const FVector&, TargetLocation);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FShiftQueueAICommandAdded, const FVector&, TargetLocation, const FString&, GroupName);
 
 UCLASS(BlueprintType)
 class AShiftQueueSystem : public AActor
@@ -22,20 +22,20 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 
-	UPROPERTY(BlueprintAssignable, Category=ShiftQueue)
+	UPROPERTY(BlueprintAssignable, Category=ShiftQueue, meta=(ShortTooltip = "A delegate for adding a ShiftQueue player command"))
 	FShiftQueuePlayerCommandAdded OnShiftQueuePlayerCommandAdded;
 
-	UPROPERTY(BlueprintAssignable, Category = ShiftQueue)
+	UPROPERTY(BlueprintAssignable, Category=ShiftQueue, meta=(ShortTooltip = "A delegate for adding a ShiftQueue AI command"))
 	FShiftQueueAICommandAdded OnShiftQueueAICommandAdded;
 
-	UFUNCTION(BlueprintCallable, Category=ShiftQueue)
-	void AddPlayerCommand(const FShiftQueueCommand& PlayerCommand);
+	UFUNCTION(BlueprintCallable, Category=ShiftQueue, meta=(ShortToolTip = "Adds a player ShiftQueue command"))
+	void AddPlayerCommand(const FVector& TargetLocation);
 
 	void AddAICommand(const FAIMoveRequest& MoveRequest, const FString& CommandGroup);
 
 private:
 	TSharedPtr<SShiftQueueInputHandler> InputHandlerWidget;
-	TArray<FShiftQueueCommand> PlayerCommands;
+	TArray<FVector> PlayerCommands;
 	TMap<FString, TArray<FAIMoveRequest>> AICommandGroups;
 
 };

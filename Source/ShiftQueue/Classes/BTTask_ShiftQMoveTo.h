@@ -4,7 +4,7 @@
 
 #include "BTTask_ShiftQMoveTo.generated.h"
 
-UCLASS()
+UCLASS(config = Game)
 class SHIFTQUEUE_API UBTTask_ShiftQMoveTo : public UBTTask_BlackboardBase
 {
 	GENERATED_UCLASS_BODY()
@@ -18,14 +18,15 @@ private:
 	virtual EBTNodeResult::Type AbortTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 	virtual void OnTaskFinished(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, EBTNodeResult::Type TaskResult) override;
 	virtual void TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds) override;
-
-	//virtual void OnMessage(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, FName Message, int32 RequestID, bool bSuccess) override;
 	// UBTTask_BlackboardBase Interface
 
 	void HandleShiftQueueCommandExecutionFinished(struct FAIRequestID RequestID, const struct FPathFollowingResult& PathFollowingResult);
 	EBlackboardNotificationResult OnBlackboardValueChange(const UBlackboardComponent& Blackboard, FBlackboard::FKey ChangedKeyID);
 
 	FDelegateHandle BBObserverDelegateHandle;
+
+	UPROPERTY(config, Category = Node, EditAnywhere, meta = (ClampMin = "0.0", UIMin = "0.0"))
+	float AcceptableRadius;
 
 	UPROPERTY(Category = Blackboard, EditAnywhere, AdvancedDisplay, meta = (ClampMin = "1", UIMin = "1", EditCondition = "bObserveBlackboardValue"))
 	float ObservedBlackboardValueTolerance;
@@ -60,9 +61,7 @@ private:
 	/** set automatically if move should use GameplayTasks */
 	uint32 bUseGameplayTasks : 1;
 
-	UPROPERTY(EditAnywhere)
-	float AcceptableRadius;
-
+	/** the group of ShiftQueue AI components that the command is aimed for */
 	UPROPERTY(EditAnywhere)
 	FString Group;
 

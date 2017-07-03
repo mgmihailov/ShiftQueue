@@ -26,7 +26,7 @@ void UShiftQueueCharacterMovementComponent::BeginPlay()
 	PathComp->OnRequestFinished.AddUObject(this, &UShiftQueueCharacterMovementComponent::OnMoveRequestFinished);
 }
 
-void UShiftQueueCharacterMovementComponent::ExecuteShiftQueueCommand(const FShiftQueueCommand& Command)
+void UShiftQueueCharacterMovementComponent::ExecuteShiftQueueCommand(const FVector& TargetLocation)
 {
 	bIsExecutingCommand = true;
 	UNavigationSystem* NavSys = GetWorld()->GetNavigationSystem();
@@ -37,12 +37,7 @@ void UShiftQueueCharacterMovementComponent::ExecuteShiftQueueCommand(const FShif
 		break;
 	}
 
-	NavSys->SimpleMoveToLocation(GetWorld()->GetFirstPlayerController(), Command.TargetLocation);
-}
-
-void UShiftQueueCharacterMovementComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	NavSys->SimpleMoveToLocation(GetWorld()->GetFirstPlayerController(), TargetLocation);
 }
 
 bool UShiftQueueCharacterMovementComponent::IsExecutingCommand() const

@@ -81,15 +81,15 @@ void AShiftQueueSystem::Tick(float DeltaSeconds)
 }
 
 
-void AShiftQueueSystem::AddPlayerCommand(const FShiftQueueCommand& PlayerCommand)
+void AShiftQueueSystem::AddPlayerCommand(const FVector& TargetLocation)
 {
-	PlayerCommands.Push(PlayerCommand);
-	OnShiftQueuePlayerCommandAdded.Broadcast(PlayerCommand);
+	PlayerCommands.Push(TargetLocation);
+	OnShiftQueuePlayerCommandAdded.Broadcast(TargetLocation);
 }
 
 void AShiftQueueSystem::AddAICommand(const FAIMoveRequest& MoveRequest, const FString& CommandGroup)
 {
 	AICommandGroups.FindOrAdd(CommandGroup);
 	AICommandGroups[CommandGroup].Add(MoveRequest);
-	OnShiftQueueAICommandAdded.Broadcast(MoveRequest, CommandGroup);
+	OnShiftQueueAICommandAdded.Broadcast(MoveRequest.GetGoalLocation(), CommandGroup);
 }

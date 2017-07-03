@@ -124,10 +124,6 @@ void UBTTask_ShiftQMoveTo::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* No
 	}
 }
 
-//void UBTTask_ShiftQMoveTo::OnMessage(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, FName Message, int32 RequestID, bool bSuccess)
-//{
-//}
-
 void UBTTask_ShiftQMoveTo::HandleShiftQueueCommandExecutionFinished(FAIRequestID RequestID, const FPathFollowingResult& PathFollowingResult)
 {
 	bWasTaskSuccessful = PathFollowingResult.IsSuccess();

@@ -14,7 +14,6 @@ public:
 
 	// UActorComponent
 	virtual void BeginPlay();
-	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction);
 	// UActorComponent
 
 	void ExecuteMoveRequest(const struct FAIMoveRequest& MoveRequest);
