@@ -39,6 +39,9 @@ public class ShiftQueue : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"InputCore",
+                "AIModule",
+                "GameplayTasks"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
