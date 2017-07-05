@@ -14,10 +14,15 @@
 	"IsBetaVersion": false,
 	"Installed": false,
 	"Modules": [
-		{
-			"Name": "ShiftQueue",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		}
+    {
+      "Name": "ShiftQueue",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    },
+    {
+      "Type": "Editor",
+      "Name": "ShiftQueueEditorPlugin",
+      "LoadingPhase": "Default"
+    }
 	]
 }

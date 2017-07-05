@@ -13,7 +13,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShiftQueuePlayerCommandAdded, const
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FShiftQueueAICommandAdded, const FVector&, TargetLocation, const FString&, GroupName);
 
 UCLASS(BlueprintType)
-class AShiftQueueSystem : public AActor
+class SHIFTQUEUE_API AShiftQueueSystem : public AActor
 {
 	GENERATED_BODY()
 public:
