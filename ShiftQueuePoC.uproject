@@ -1,0 +1,19 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{543A78B2-4956-03F9-817B-5BA0E3E15020}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "ShiftQueuePoC",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ShiftQueue",
+			"Enabled": true
+		}
+	]
+}
